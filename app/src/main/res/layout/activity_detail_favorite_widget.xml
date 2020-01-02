@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.DetailFavoriteWidgetActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_item_photo_detail"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/pg"
+            android:contentDescription="@string/image_detail" />
+
+        <TextView
+            android:id="@+id/tv_item_name_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:layout_marginLeft="72dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/movies_name"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_item_description_detail"
+            app:layout_constraintTop_toBottomOf="@+id/img_item_photo_detail" />
+
+        <FrameLayout
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="13dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_item_description_detail"
+            app:layout_constraintTop_toBottomOf="@+id/img_item_photo_detail">
+
+            <ImageView
+                android:id="@+id/img_background_favorite"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:contentDescription="@string/background_favorite"
+                android:background="@drawable/background_layer" />
+
+            <ImageView
+                android:id="@+id/img_favorite"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_favorite_border_black"
+                android:contentDescription="@string/image_favorite"/>
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/text_rate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/text_rate"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_item_name_detail"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_name_detail" />
+
+        <TextView
+            android:id="@+id/tv_nilai_rate_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginLeft="56dp"
+            android:text="@string/nilai_rate"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_item_name_detail"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_name_detail" />
+
+        <TextView
+            android:id="@+id/tv_item_description_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/description"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_rate" />
+
+        <ProgressBar
+            android:id="@+id/progressBarDetail"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="350dp"
+            android:layout_height="186dp"
+            android:layout_centerInParent="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            android:visibility="gone" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
