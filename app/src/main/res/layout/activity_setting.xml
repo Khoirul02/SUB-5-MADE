@@ -48,7 +48,7 @@
         </LinearLayout>
 
         <Switch
-            android:id="@+id/switch_pop_movie_reminder"
+            android:id="@+id/switch_daily_reminder_today"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

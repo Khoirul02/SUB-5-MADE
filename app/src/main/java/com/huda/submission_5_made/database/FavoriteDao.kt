@@ -10,9 +10,6 @@ interface FavoriteDao {
     @Insert
     fun insert(movie : DataFilm)
 
-    @Query("DELETE FROM favorite")
-    fun deleteAll()
-
     @Query("DELETE FROM favorite WHERE id= :id")
     fun deleteById(id: Long)
 
