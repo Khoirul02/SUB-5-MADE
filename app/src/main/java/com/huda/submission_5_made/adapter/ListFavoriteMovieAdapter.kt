@@ -49,15 +49,12 @@ class ListFavoriteMovieAdapter : RecyclerView.Adapter<ListFavoriteMovieAdapter.L
                 tv_item_name.text = movies.name
                 tv_item_description.text = movies.description
                 tv_item_date.text = movies.date
-                cd_detail.setOnClickListener {
-                    val intent = Intent(context, DetailFavoriteActivity::class.java)
-                    intent.putExtra(DetailFavoriteActivity.EXTRA_FILM, movies)
-                    startActivity(context, intent, Bundle())
-                }
+                itemView.setOnClickListener { onItemClickCallback?.onItemClicked(movies) }
+
             }
         }
     }
     interface OnItemClickCallback {
-        fun onItemClicked(data: RootData)
+        fun onItemClicked(data: DataFilm)
     }
 }

@@ -1,5 +1,6 @@
 package com.huda.submission_5_made.database
 
+import android.database.Cursor
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -7,6 +8,7 @@ import com.huda.submission_5_made.model.DataFilm
 
 @Dao
 interface FavoriteDao {
+
     @Insert
     fun insert(movie : DataFilm)
 
@@ -27,5 +29,8 @@ interface FavoriteDao {
 
     @Query("SELECT * FROM favorite WHERE category= 'tv' ORDER BY id ASC")
     fun getTvShow() : List<DataFilm>
+
+    @Query("SELECT * FROM favorite ORDER BY id ASC")
+    fun getAllCursor(): Cursor?
 
 }

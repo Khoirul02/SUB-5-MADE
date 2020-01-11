@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/favorite_navigation_movie">
+
+    <fragment
+        android:id="@+id/favorite_navigation_movie"
+        android:name="com.huda.submission_5_made_favorite.ui.fragment.FavoriteMovieFragment"
+        android:label="@string/title_favorite_movie"
+        tools:layout="@layout/favorite_movie_fragment" />
+
+    <fragment
+        android:id="@+id/favorite_navigation_tv_show"
+        android:name="com.huda.submission_5_made_favorite.ui.fragment.FavoriteTvShowFragment"
+        android:label="@string/title_favorite_tv_show"
+        tools:layout="@layout/favorite_tv_show_fragment" />
+</navigation>

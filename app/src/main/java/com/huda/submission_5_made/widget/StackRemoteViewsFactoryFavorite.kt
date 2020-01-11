@@ -1,9 +1,12 @@
 package com.huda.submission_5_made.widget
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
+import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -27,9 +30,14 @@ class StackRemoteViewsFactoryFavorite(private val mContext: Context) :
 
     override fun getItemId(position: Int): Long = 0
 
+    @SuppressLint("Recycle")
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onDataSetChanged() {
+//        val identityToken = Binder.clearCallingIdentity()
         database = DatabaseFavorite.getDatabase(mContext)
         listMovie = database!!.favoriteDao().getAll() as ArrayList<DataFilm>
+//        Binder.restoreCallingIdentity(identityToken)
+//        mContext.contentResolver.query(CONTENT_URI, null, null, null, null)?.close()
     }
 
     override fun hasStableIds(): Boolean = false

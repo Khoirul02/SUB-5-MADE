@@ -115,10 +115,9 @@ class SettingActivity : AppCompatActivity() {
                     val results = responseObject.getJSONArray("results")
                     for (i in 0 until results.length()) {
                         val title = results.getJSONObject(i).getString("original_title")
-                        val release = results.getJSONObject(i).getString("release_date")
-                        val releaseDay = "Release Date : $release"
+                        val description = results.getJSONObject(i).getString("overview")
                         val id = results.getJSONObject(i).getInt("id")
-                        releaseAlarmReceiver.setReminderRelease(context,title,reminder,releaseDay, id)
+                        releaseAlarmReceiver.setReminderRelease(context,title,reminder,description, id)
                     }
                     Log.d(TAG, "onSuccess: Selesai.....")
                 } catch (e: Exception) {

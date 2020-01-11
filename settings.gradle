@@ -1,2 +1,2 @@
-include ':app', ':consumer_favorite_5_made'
+include ':app', ':submission_5_made_favorite'
 rootProject.name='Submission_5_MADE'

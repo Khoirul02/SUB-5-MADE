@@ -62,7 +62,7 @@ class FavoriteMovieFragment : Fragment() {
             }
         })
         adapter.setOnItemClickCallback(object : ListFavoriteMovieAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: RootData) {
+            override fun onItemClicked(data: DataFilm) {
                 val intent = Intent(activity, DetailFavoriteActivity::class.java)
                 intent.putExtra(DetailFavoriteActivity.EXTRA_FILM, data)
                 startActivity(intent)
