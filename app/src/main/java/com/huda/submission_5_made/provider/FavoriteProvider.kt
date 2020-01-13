@@ -6,7 +6,6 @@ import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
 import android.util.Log
-import androidx.room.RoomMasterTable.TABLE_NAME
 import com.huda.submission_5_made.database.DatabaseFavorite
 import com.huda.submission_5_made.database.FavoriteDao
 
@@ -15,6 +14,7 @@ class FavoriteProvider : ContentProvider() {
     companion object{
         private const val CODE_FAVORITE_DIR = 1
         private const val CODE_FAVORITE_ITEM = 2
+        private const val TABLE_NAME = "favorite"
         private const val AUTHORITY = "com.huda.submission_5_made.provider"
         private val uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
 
@@ -26,7 +26,7 @@ class FavoriteProvider : ContentProvider() {
     }
 
     override fun onCreate(): Boolean {
-    return true
+        return true
     }
 
     override fun query(uri: Uri, projection: Array<String>?, selection: String?, selectionArgs: Array<String>?, sortOrder: String?): Cursor? {
@@ -49,21 +49,20 @@ class FavoriteProvider : ContentProvider() {
     }
 
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
-        TODO("Implement this to handle requests to insert a new row.")
+        context?.contentResolver?.notifyChange(uri, null)
+        return uri
     }
 
     override fun getType(uri: Uri): String? {
-        TODO(
-            "Implement this to handle requests for the MIME type of the data" +
-                    "at the given URI"
-        )
+        return null
     }
 
     override fun update(
         uri: Uri, values: ContentValues?, selection: String?,
         selectionArgs: Array<String>?
     ): Int {
-        TODO("Implement this to handle requests to update one or more rows.")
+        context?.contentResolver?.notifyChange(uri, null)
+        return 0
     }
 
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<String>?): Int {

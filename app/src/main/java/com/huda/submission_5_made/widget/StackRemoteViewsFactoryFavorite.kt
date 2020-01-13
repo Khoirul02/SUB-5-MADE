@@ -33,11 +33,8 @@ class StackRemoteViewsFactoryFavorite(private val mContext: Context) :
     @SuppressLint("Recycle")
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onDataSetChanged() {
-//        val identityToken = Binder.clearCallingIdentity()
         database = DatabaseFavorite.getDatabase(mContext)
         listMovie = database!!.favoriteDao().getAll() as ArrayList<DataFilm>
-//        Binder.restoreCallingIdentity(identityToken)
-//        mContext.contentResolver.query(CONTENT_URI, null, null, null, null)?.close()
     }
 
     override fun hasStableIds(): Boolean = false

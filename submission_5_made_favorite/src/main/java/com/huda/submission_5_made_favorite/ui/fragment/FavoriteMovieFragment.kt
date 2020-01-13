@@ -1,6 +1,5 @@
 package com.huda.submission_5_made_favorite.ui.fragment
 import android.database.ContentObserver
-import android.media.tv.TvContract.Channels.CONTENT_URI
 import android.os.*
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.huda.submission_5_made_favorite.R
 import com.huda.submission_5_made_favorite.adapter.ListFavoriteMovieAdapter
+import com.huda.submission_5_made_favorite.database.DatabaseContract
 import com.huda.submission_5_made_favorite.model.DataFilm
+import com.huda.submission_5_made_favorite.task.LoadFavoriteTask
 import kotlinx.android.synthetic.main.favorite_movie_fragment.*
 
 class FavoriteMovieFragment : Fragment(), LoadFavoriteCallback {
@@ -18,7 +19,8 @@ class FavoriteMovieFragment : Fragment(), LoadFavoriteCallback {
     private lateinit var adapter: ListFavoriteMovieAdapter
 
     override fun onFavoriteLoaded(favorites: List<DataFilm>) {
-//        adapter.setData(favorites as ArrayList<DataFilm>)
+        adapter.setData(favorites.filter {
+            it.category == "movie" } as ArrayList<DataFilm>)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -33,17 +35,27 @@ class FavoriteMovieFragment : Fragment(), LoadFavoriteCallback {
 
         rv_movies.layoutManager = LinearLayoutManager(activity)
         rv_movies.adapter = adapter
+
         val handlerThread = HandlerThread("DataObserver")
         handlerThread.start()
         val handler = Handler(handlerThread.looper)
         val myObserver = object : ContentObserver(handler) {
             override fun onChange(self: Boolean) {
+                context?.let {
+                    LoadFavoriteTask(it, this@FavoriteMovieFragment).execute()
+                }
             }
         }
-        context?.contentResolver?.registerContentObserver(CONTENT_URI, true, myObserver)
 
+        context?.let {
+            it.contentResolver?.registerContentObserver(
+                DatabaseContract.MovieFavorite.CONTENT_URI,
+                true,
+                myObserver
+            )
+            LoadFavoriteTask(it, this).execute()
+        }
     }
-
 }
 interface LoadFavoriteCallback {
     fun onFavoriteLoaded(favorites: List<DataFilm>)

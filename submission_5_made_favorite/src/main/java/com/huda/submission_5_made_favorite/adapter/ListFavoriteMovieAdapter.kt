@@ -17,21 +17,19 @@ class ListFavoriteMovieAdapter : RecyclerView.Adapter<ListFavoriteMovieAdapter.L
         this.onItemClickCallback = onItemClickCallback
     }
 
-    var listMovie = ArrayList<DataFilm>()
-        set(listMovie) {
-            if (listMovie.size > 0) {
-                this.listMovie.clear()
-            }
-            this.listMovie.addAll(listMovie)
-            notifyDataSetChanged()
-        }
+    private val listMovie = ArrayList<DataFilm>()
+    fun setData(items: ArrayList<DataFilm>) {
+        listMovie.clear()
+        listMovie.addAll(items)
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ListViewHolder {
         val view =
             LayoutInflater.from(viewGroup.context).inflate(R.layout.item_data, viewGroup, false)
         return ListViewHolder(view)
     }
 
-    override fun getItemCount(): Int = listMovie.size
+        override fun getItemCount(): Int = listMovie.size
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(listMovie[position])

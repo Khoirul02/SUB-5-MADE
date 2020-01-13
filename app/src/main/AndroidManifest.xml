@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.huda.submission_5_made">
-    <permission android:name="com.huda.submission_5_made.READ_DATABASE" android:protectionLevel="normal"/>
-    <permission android:name="com.huda.submission_5_made.WRITE_DATABASE" android:protectionLevel="normal"/>
+    <permission
+        android:name="com.huda.submission_5_made.provider.READ_WRITE"
+        android:protectionLevel="normal" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.android.providers.tv.permission.READ_EPG_DATA" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,14 +18,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="m">
         <provider
-            android:name=".provider.FavoriteProvider"
-            android:authorities="com.huda.submission_5_made"
+            android:name="com.huda.submission_5_made.provider.FavoriteProvider"
+            android:authorities="com.huda.submission_5_made.provider"
             android:enabled="true"
             android:exported="true"
-            android:readPermission="com.huda.submission_5_made.READ_DATABASE"
-            android:writePermission="com.huda.submission_5_made.WRITE_DATABASE">
+            android:multiprocess="true"
+            android:permission="com.huda.submission_5_made.provider.READ_WRITE">
         </provider>
         <receiver
             android:name=".scheduler.ReleaseAlarmReceiver"
