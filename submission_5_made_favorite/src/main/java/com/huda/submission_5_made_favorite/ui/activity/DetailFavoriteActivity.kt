@@ -7,13 +7,11 @@ import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.huda.submission_5_made_favorite.R
-import com.huda.submission_5_made_favorite.adapter.ListFavoriteMovieAdapter
 import com.huda.submission_5_made_favorite.model.DataFilm
 import kotlinx.android.synthetic.main.activity_detail_favorite.*
 
 class DetailFavoriteActivity : AppCompatActivity() {
 
-    private lateinit var adapter: ListFavoriteMovieAdapter
     companion object {
         const val EXTRA_FILM = "extra_person"
     }
@@ -33,13 +31,5 @@ class DetailFavoriteActivity : AppCompatActivity() {
             .into(img_item_photo_detail)
         val percent = data.rate * 10
         tv_nilai_rate_detail.text = "$percent%"
-
-        adapter.setOnItemClickCallback(object : ListFavoriteMovieAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: DataFilm) {
-                val intent = Intent(this@DetailFavoriteActivity, DetailFavoriteActivity::class.java)
-                intent.putExtra(DetailFavoriteActivity.EXTRA_FILM, data)
-                startActivity(intent)
-            }
-        })
     }
 }

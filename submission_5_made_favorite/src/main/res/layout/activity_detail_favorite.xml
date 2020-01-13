@@ -56,7 +56,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_favorite_border_black"
+                android:src="@drawable/ic_favorite_black"
                 android:contentDescription="@string/image_favorite"/>
 
         </FrameLayout>

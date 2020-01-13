@@ -1,6 +1,7 @@
 package com.huda.submission_5_made_favorite.ui.fragment
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.database.ContentObserver
 import android.os.Bundle
 import android.os.Handler
@@ -15,6 +16,7 @@ import com.huda.submission_5_made_favorite.adapter.ListFavoriteMovieAdapter
 import com.huda.submission_5_made_favorite.database.DatabaseContract.MovieFavorite.Companion.CONTENT_URI
 import com.huda.submission_5_made_favorite.model.DataFilm
 import com.huda.submission_5_made_favorite.task.LoadFavoriteTvShowTask
+import com.huda.submission_5_made_favorite.ui.activity.DetailFavoriteActivity
 import kotlinx.android.synthetic.main.favorite_tv_show_fragment.*
 
 class FavoriteTvShowFragment : Fragment(), LoadFavoriteTvShowCallback {
@@ -57,6 +59,13 @@ class FavoriteTvShowFragment : Fragment(), LoadFavoriteTvShowCallback {
             )
             LoadFavoriteTvShowTask(it, this).execute()
         }
+        adapter.setOnItemClickCallback(object : ListFavoriteMovieAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: DataFilm) {
+                val intent = Intent(activity, DetailFavoriteActivity::class.java)
+                intent.putExtra(DetailFavoriteActivity.EXTRA_FILM, data)
+                startActivity(intent)
+            }
+        })
     }
 }
 interface LoadFavoriteTvShowCallback {

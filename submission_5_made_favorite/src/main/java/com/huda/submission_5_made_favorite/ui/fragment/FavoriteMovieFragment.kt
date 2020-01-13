@@ -1,4 +1,5 @@
 package com.huda.submission_5_made_favorite.ui.fragment
+import android.content.Intent
 import android.database.ContentObserver
 import android.os.*
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.huda.submission_5_made_favorite.adapter.ListFavoriteMovieAdapter
 import com.huda.submission_5_made_favorite.database.DatabaseContract
 import com.huda.submission_5_made_favorite.model.DataFilm
 import com.huda.submission_5_made_favorite.task.LoadFavoriteTask
+import com.huda.submission_5_made_favorite.ui.activity.DetailFavoriteActivity
 import kotlinx.android.synthetic.main.favorite_movie_fragment.*
 
 class FavoriteMovieFragment : Fragment(), LoadFavoriteCallback {
@@ -55,6 +57,13 @@ class FavoriteMovieFragment : Fragment(), LoadFavoriteCallback {
             )
             LoadFavoriteTask(it, this).execute()
         }
+        adapter.setOnItemClickCallback(object : ListFavoriteMovieAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: DataFilm) {
+                val intent = Intent(activity, DetailFavoriteActivity::class.java)
+                intent.putExtra(DetailFavoriteActivity.EXTRA_FILM, data)
+                startActivity(intent)
+            }
+        })
     }
 }
 interface LoadFavoriteCallback {
