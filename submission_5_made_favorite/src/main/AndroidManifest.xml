@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.huda.submission_5_made_favorite">
 
-    <uses-permission android:name="com.huda.submission_5_made.READ_DATABASE" />
+    <uses-permission android:name="com.huda.submission_5_made.READ_DATABASE"/>
+    <uses-permission android:name="com.huda.submission_5_made.WRITE_DATABASE"/>
+    <uses-permission android:name="com.android.providers.tv.permission.READ_EPG_DATA" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -18,10 +20,8 @@
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

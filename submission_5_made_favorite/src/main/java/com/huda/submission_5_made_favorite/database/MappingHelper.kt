@@ -1,11 +1,10 @@
 package com.huda.submission_5_made_favorite.database
-
 import android.database.Cursor
 import com.huda.submission_5_made_favorite.model.DataFilm
 
 object MappingHelper {
     fun mapmapCursorToArrayList(filmCursor: Cursor): ArrayList<DataFilm> {
-        val movielist = ArrayList<DataFilm>()
+        val movies = ArrayList<DataFilm>()
         while (filmCursor.moveToNext()){
             val id = filmCursor.getLong(filmCursor.getColumnIndexOrThrow(DatabaseContract.MovieFavorite._ID))
             val idfilm = filmCursor.getInt(filmCursor.getColumnIndexOrThrow(DatabaseContract.MovieFavorite.IDFILM))
@@ -15,11 +14,11 @@ object MappingHelper {
             val rate = filmCursor.getDouble(filmCursor.getColumnIndexOrThrow(DatabaseContract.MovieFavorite.RATE))
             val date = filmCursor.getString(filmCursor.getColumnIndexOrThrow(DatabaseContract.MovieFavorite.DATE))
             val category = filmCursor.getString(filmCursor.getColumnIndexOrThrow(DatabaseContract.MovieFavorite.CATEGORY))
-            movielist.add(DataFilm(idfilm, name, photo, description, rate, date, category, id
+            movies.add(DataFilm(idfilm, name, photo, description, rate, date, category, id
                 )
             )
         }
-        return movielist
+        return movies
     }
 //    fun mapCursorToObject(filmCursor: Cursor): DataFilm {
 //        filmCursor.moveToNext()

@@ -16,7 +16,6 @@ import com.huda.submission_5_made.R
 import com.huda.submission_5_made.adapter.ListFavoriteMovieAdapter
 import com.huda.submission_5_made.database.DatabaseFavorite
 import com.huda.submission_5_made.model.DataFilm
-import com.huda.submission_5_made.model.RootData
 import com.huda.submission_5_made.ui.activity.DetailFavoriteActivity
 import com.huda.submission_5_made.viewmodel.FavoriteViewModel
 import kotlinx.android.synthetic.main.favorite_tv_show_fragment.*

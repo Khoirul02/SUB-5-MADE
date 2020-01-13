@@ -16,14 +16,18 @@ class ListFavoriteMovieAdapter : RecyclerView.Adapter<ListFavoriteMovieAdapter.L
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
-    var listMovie = ArrayList<DataFilm>()
-    fun setData(movies: ArrayList<DataFilm>) {
-        listMovie.addAll(movies)
-        notifyDataSetChanged()
-    }
 
+    var listMovie = ArrayList<DataFilm>()
+        set(listMovie) {
+            if (listMovie.size > 0) {
+                this.listMovie.clear()
+            }
+            this.listMovie.addAll(listMovie)
+            notifyDataSetChanged()
+        }
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ListViewHolder {
-        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_data, viewGroup, false)
+        val view =
+            LayoutInflater.from(viewGroup.context).inflate(R.layout.item_data, viewGroup, false)
         return ListViewHolder(view)
     }
 
@@ -47,6 +51,7 @@ class ListFavoriteMovieAdapter : RecyclerView.Adapter<ListFavoriteMovieAdapter.L
             }
         }
     }
+
     interface OnItemClickCallback {
         fun onItemClicked(data: DataFilm)
     }

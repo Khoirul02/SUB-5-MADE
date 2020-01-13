@@ -10,7 +10,7 @@ import androidx.room.RoomMasterTable.TABLE_NAME
 import com.huda.submission_5_made.database.DatabaseFavorite
 import com.huda.submission_5_made.database.FavoriteDao
 
-class ProviderFavorite : ContentProvider() {
+class FavoriteProvider : ContentProvider() {
 
     companion object{
         private const val CODE_FAVORITE_DIR = 1
@@ -26,7 +26,7 @@ class ProviderFavorite : ContentProvider() {
     }
 
     override fun onCreate(): Boolean {
-        return true
+    return true
     }
 
     override fun query(uri: Uri, projection: Array<String>?, selection: String?, selectionArgs: Array<String>?, sortOrder: String?): Cursor? {
@@ -48,15 +48,21 @@ class ProviderFavorite : ContentProvider() {
         }
     }
 
-    override fun getType(uri: Uri): String? {
-        TODO("Implement this to handle requests for the MIME type of the data" + "at the given URI")
-    }
-
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
         TODO("Implement this to handle requests to insert a new row.")
     }
 
-    override fun update(uri: Uri, values: ContentValues?, selection: String?, selectionArgs: Array<String>?): Int {
+    override fun getType(uri: Uri): String? {
+        TODO(
+            "Implement this to handle requests for the MIME type of the data" +
+                    "at the given URI"
+        )
+    }
+
+    override fun update(
+        uri: Uri, values: ContentValues?, selection: String?,
+        selectionArgs: Array<String>?
+    ): Int {
         TODO("Implement this to handle requests to update one or more rows.")
     }
 

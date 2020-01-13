@@ -10,7 +10,7 @@ object DatabaseContract {
     class MovieFavorite : BaseColumns {
 
         companion object {
-            const val TABLE_NAME = "favorite"
+            private const val TABLE_NAME = "favorite"
             const val _ID = "id"
             const val IDFILM = "id_film"
             const val NAME = "original_title"
@@ -20,7 +20,8 @@ object DatabaseContract {
             const val DATE = "release_date"
             const val CATEGORY = "category"
 
-            val CONTENT_URI: Uri = Uri.Builder().scheme(SCHEME)
+            val CONTENT_URI: Uri = Uri.Builder()
+                .scheme(SCHEME)
                 .authority(AUTHORITY)
                 .appendPath(TABLE_NAME)
                 .build()
