@@ -13,17 +13,15 @@ import com.huda.submission_5_made.ui.activity.DetailFavoriteWidgetActivity
 /**
  * Implementation of App Widget functionality.
  */
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class FavoriteWidget : AppWidgetProvider() {
     companion object {
 
         const val EXTRA_CATEGORY = "com.submission_5_made.widget.EXTRA_CATEGORY"
-        private const val TOAST_ACTION = "com.submission_5_made.widget.TOAST_ACTION"
         const val EXTRA_ITEM = "com.submission_5_made.widget.EXTRA_ITEM"
+        private const val TOAST_ACTION = "com.submission_5_made.widget.TOAST_ACTION"
 
-        private fun updateAppWidget(
-            context: Context,
-            appWidgetManager: AppWidgetManager,
-            appWidgetId: Int
+        private fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int
         ) {
             val intent = Intent(context, StackWidgetServiceFavorite::class.java)
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
@@ -38,11 +36,7 @@ class FavoriteWidget : AppWidgetProvider() {
             toastIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
             intent.data = intent.toUri(Intent.URI_INTENT_SCHEME).toUri()
 
-            val toastPendingIntent = PendingIntent.getBroadcast(
-                context,
-                0,
-                toastIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+            val toastPendingIntent = PendingIntent.getBroadcast(context, 0, toastIntent, PendingIntent.FLAG_UPDATE_CURRENT
             )
             views.setPendingIntentTemplate(R.id.stack_view, toastPendingIntent)
             appWidgetManager.updateAppWidget(appWidgetId, views)
@@ -68,11 +62,7 @@ class FavoriteWidget : AppWidgetProvider() {
         }
     }
 
-    private fun openDetailFilm(
-        context: Context,
-        movies: Int,
-        category: String?
-    ) {
+    private fun openDetailFilm(context: Context, movies: Int, category: String) {
         val intent = Intent(context, DetailFavoriteWidgetActivity::class.java)
         intent.putExtra(DetailFavoriteWidgetActivity.EXTRA_FILM, movies)
         intent.putExtra(DetailFavoriteWidgetActivity.EXTRA_FILM_2, category)

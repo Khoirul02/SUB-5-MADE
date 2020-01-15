@@ -17,7 +17,7 @@ import com.huda.submission_5_made_favorite.database.DatabaseContract.MovieFavori
 import com.huda.submission_5_made_favorite.model.DataFilm
 import com.huda.submission_5_made_favorite.task.LoadFavoriteTvShowTask
 import com.huda.submission_5_made_favorite.ui.activity.DetailFavoriteActivity
-import kotlinx.android.synthetic.main.favorite_tv_show_fragment.*
+import kotlinx.android.synthetic.main.favorite_tv_show_fragment.rv_movies
 
 class FavoriteTvShowFragment : Fragment(), LoadFavoriteTvShowCallback {
     private lateinit var adapter: ListFavoriteMovieAdapter

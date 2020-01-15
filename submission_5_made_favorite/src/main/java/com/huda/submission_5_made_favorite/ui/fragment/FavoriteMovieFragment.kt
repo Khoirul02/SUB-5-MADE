@@ -21,6 +21,7 @@ class FavoriteMovieFragment : Fragment(), LoadFavoriteCallback {
     private lateinit var adapter: ListFavoriteMovieAdapter
 
     override fun onFavoriteLoaded(favorites: List<DataFilm>) {
+        if(favorites.isNotEmpty())
         adapter.setData(favorites.filter {
             it.category == "movie" } as ArrayList<DataFilm>)
     }

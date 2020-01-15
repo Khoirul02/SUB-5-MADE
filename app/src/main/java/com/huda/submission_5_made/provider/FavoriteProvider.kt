@@ -57,10 +57,7 @@ class FavoriteProvider : ContentProvider() {
         return null
     }
 
-    override fun update(
-        uri: Uri, values: ContentValues?, selection: String?,
-        selectionArgs: Array<String>?
-    ): Int {
+    override fun update(uri: Uri, values: ContentValues?, selection: String?, selectionArgs: Array<String>?): Int {
         context?.contentResolver?.notifyChange(uri, null)
         return 0
     }

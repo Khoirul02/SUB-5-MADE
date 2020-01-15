@@ -33,8 +33,8 @@ class DetailFavoriteWidgetActivity : AppCompatActivity() {
 
         val language = resources.getString(R.string.language_string)
         val idFilm = intent.getIntExtra(EXTRA_FILM,0)
-        CheckFavorite(this, idFilm).execute()
         val category = intent.getStringExtra(EXTRA_FILM_2)
+        CheckFavorite(this, idFilm).execute()
         mainViewModel = ViewModelProvider(
             this, ViewModelProvider.NewInstanceFactory()).get(DetailMovieViewModel::class.java)
         mainViewModel.setFilm(this,idFilm,language, tv_item_name_detail,tv_item_description_detail,img_item_photo_detail,tv_nilai_rate_detail,category)

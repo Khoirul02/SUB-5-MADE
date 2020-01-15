@@ -1,7 +1,6 @@
 package com.huda.submission_5_made_favorite.ui.activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
@@ -22,14 +21,13 @@ class DetailFavoriteActivity : AppCompatActivity() {
         val title = resources.getString(R.string.title_favorite_movie_detail)
         supportActionBar?.title = title
         val data = intent.getParcelableExtra(EXTRA_FILM) as? DataFilm
-        val idFilm = data!!.idfilm
-        tv_item_name_detail.text = data.name
-        tv_item_description_detail.text = data.description
+        tv_item_name_detail.text = data?.name
+        tv_item_description_detail.text = data?.description
         Glide.with(this)
-            .load("https://image.tmdb.org/t/p/w185_and_h278_bestv2" + data.photo)
+            .load("https://image.tmdb.org/t/p/w185_and_h278_bestv2" + data?.photo)
             .apply(RequestOptions().override(512, 512))
             .into(img_item_photo_detail)
-        val percent = data.rate * 10
+        val percent = data?.rate?.times(10)
         tv_nilai_rate_detail.text = "$percent%"
     }
 }
